@@ -1,0 +1,7 @@
+.env
+.idea
+*.key
+*.json
+*.cert
+*.txt
+*.pem
