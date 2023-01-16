@@ -28,6 +28,21 @@ func (cfg *MapProvider) GetString(keyName string, defaultVal string) string {
 		return defaultVal
 	}
 }
+
+// GetStrings returns a slice of strings from the cfg[keyName].
+func (cfg *MapProvider) GetStrings(keyName string, defaultVals []string) []string {
+	val, exists := cfg.vals[keyName]
+	if !exists {
+		return defaultVals
+	}
+	switch t := val.(type) {
+	case []string:
+		return t
+	default:
+		return defaultVals
+	}
+}
+
 func (cfg *MapProvider) GetBool(keyName string, defaultVal bool) bool {
 	val, exists := cfg.vals[keyName]
 	if !exists {

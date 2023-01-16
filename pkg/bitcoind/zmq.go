@@ -1,11 +1,11 @@
 package bitcoind
 
 import (
-	"blockus/pkg/log"
 	"context"
 	"encoding/binary"
 	"encoding/hex"
 	"fmt"
+	"github.com/SachinMeier/blockus/pkg/log"
 	zmq "github.com/pebbe/zmq4"
 )
 

@@ -2,6 +2,7 @@ package config
 
 import (
 	"os"
+	"strings"
 
 	"strconv"
 )
@@ -35,6 +36,15 @@ func (e *EnvProvider) GetString(keyName string, defaultVal string) string {
 		return defaultVal
 	}
 	return val
+}
+
+// GetStrings returns a slice of strings laoded from the env var keyName. The separator defaults to a comma
+func (e *EnvProvider) GetStrings(keyName string, defaultVals []string) []string {
+	val := os.Getenv(keyName)
+	if val == "" {
+		return defaultVals
+	}
+	return strings.Split(val, ",")
 }
 
 // GetBool returns a boolean value of the env var specified by keyName.
