@@ -14,6 +14,6 @@ func main() {
 
 	fmt.Println("sk:", sk)
 	fmt.Println("pk:", pk)
-	fmt.Println(nsec)
-	fmt.Println(npub)
+	fmt.Println("nsec: ", nsec)
+	fmt.Println("npub: ", npub)
 }
