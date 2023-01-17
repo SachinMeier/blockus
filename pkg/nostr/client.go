@@ -43,8 +43,11 @@ func (client *Client) PublishEvent(event nostr.Event) error {
 			log.Warnf("failed to connect to relay %s : %w", url, err)
 			continue
 		}
-		relay.Publish(client.ctx, event)
-		published = true
+		status := relay.Publish(client.ctx, event)
+		if status == nostr.PublishStatusSucceeded {
+			published = true
+			log.Debugf("successfully published message to relay %s", url)
+		}
 	}
 	if !published {
 		return fmt.Errorf("failed to publish event to any relays : %s", event.ID)
